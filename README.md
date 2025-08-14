@@ -67,3 +67,4 @@ cd amharic-streamlit-qa
 pip install -r requirements.txt
 streamlit run app.py
 
+"# amharic-legal-issue-assistant-chatbot" 
