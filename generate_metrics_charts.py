@@ -6,11 +6,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+# Constants for maintainability index grade thresholds
+MI_THRESHOLD_FAIL = 20
+MI_THRESHOLD_MODERATE = 65
+MI_THRESHOLD_GOOD = 85
+MI_THRESHOLD_EXCELLENT = 100
+
 # Create output directory for charts
 os.makedirs('metrics_visualizations', exist_ok=True)
 
 # Set style for professional-looking charts
-plt.style.use('seaborn-v0_8-darkgrid' if 'seaborn-v0_8-darkgrid' in plt.style.available else 'default')
+try:
+    plt.style.use('seaborn-v0_8-darkgrid')
+except OSError:
+    plt.style.use('default')
 
 # 1. Code Distribution by Language
 def create_code_distribution_chart():
@@ -103,11 +112,11 @@ def create_maintainability_chart():
     avg_mi = np.mean(mi_scores)
     theta = np.linspace(0, np.pi, 100)
     
-    # Background semicircles for different grades
-    ax2.fill_between(theta, 0, 20, color='#e74c3c', alpha=0.3, transform=ax2.transData)
-    ax2.fill_between(theta, 20, 65, color='#f39c12', alpha=0.3, transform=ax2.transData)
-    ax2.fill_between(theta, 65, 85, color='#3498db', alpha=0.3, transform=ax2.transData)
-    ax2.fill_between(theta, 85, 100, color='#2ecc71', alpha=0.3, transform=ax2.transData)
+    # Background semicircles for different grades using defined thresholds
+    ax2.fill_between(theta, 0, MI_THRESHOLD_FAIL, color='#e74c3c', alpha=0.3, transform=ax2.transData)
+    ax2.fill_between(theta, MI_THRESHOLD_FAIL, MI_THRESHOLD_MODERATE, color='#f39c12', alpha=0.3, transform=ax2.transData)
+    ax2.fill_between(theta, MI_THRESHOLD_MODERATE, MI_THRESHOLD_GOOD, color='#3498db', alpha=0.3, transform=ax2.transData)
+    ax2.fill_between(theta, MI_THRESHOLD_GOOD, MI_THRESHOLD_EXCELLENT, color='#2ecc71', alpha=0.3, transform=ax2.transData)
     
     # Plot as polar but display as semi-circle
     ax2.plot([0, avg_mi/100 * np.pi], [0, 80], 'ro-', linewidth=4, markersize=10)
