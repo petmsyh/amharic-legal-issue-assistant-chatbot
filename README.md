@@ -66,5 +66,24 @@ git clone https://github.com/ProfessorAbraham/amharic-streamlit-qa.git
 cd amharic-streamlit-qa
 pip install -r requirements.txt
 streamlit run app.py
+```
+
+---
+
+## 📊 Software Metrics
+
+Comprehensive software metrics and analysis are available:
+
+- **📈 Quick Summary:** [METRICS_SUMMARY.md](METRICS_SUMMARY.md)
+- **📄 Full Document:** [SOFTWARE_METRICS_DOCUMENT.md](SOFTWARE_METRICS_DOCUMENT.md)
+- **📊 Visualizations:** [metrics_visualizations/](metrics_visualizations/)
+
+**Key Highlights:**
+- ✅ Cyclomatic Complexity: 2.71 (Grade A)
+- ✅ Maintainability Index: 77.0 (Grade A)
+- ✅ Clean, focused codebase (337 LOC)
+- ⚠️ Test coverage: 0% (needs improvement)
+
+---
 
 "# amharic-legal-issue-assistant-chatbot" 
